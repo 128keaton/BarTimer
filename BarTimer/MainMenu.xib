@@ -30,17 +30,17 @@
                         <action selector="updateFieldWithSender:" target="G6n-kT-7iG" id="sh0-9f-eQS"/>
                     </connections>
                 </stepper>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdS-Uw-DE9">
-                    <rect key="frame" x="18" y="9" width="127" height="22"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdS-Uw-DE9" customClass="ColoredTextField" customModule="BarTimer" customModuleProvider="target">
+                    <rect key="frame" x="18" y="9" width="121" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="kyZ-cO-Qkz">
                         <font key="font" metaFont="system" size="19"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="BdS-Uw-DE9" secondAttribute="trailing" constant="20" symbolic="YES" id="3a1-rV-UTf"/>
+                <constraint firstAttribute="trailing" secondItem="BdS-Uw-DE9" secondAttribute="trailing" constant="26" id="3a1-rV-UTf"/>
                 <constraint firstItem="BdS-Uw-DE9" firstAttribute="centerY" secondItem="5DO-y5-inv" secondAttribute="centerY" id="6XZ-J6-kXQ"/>
                 <constraint firstItem="5DO-y5-inv" firstAttribute="top" secondItem="sf6-hi-0eK" secondAttribute="top" constant="7" id="BbD-Bq-bOs"/>
                 <constraint firstItem="5DO-y5-inv" firstAttribute="centerY" secondItem="sf6-hi-0eK" secondAttribute="centerY" id="MDt-bV-OL9"/>
@@ -67,6 +67,7 @@
                 <menuItem title="Timer" id="AHe-Tb-uyj">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="oga-Oo-bJY"/>
                 <menuItem title="Start" id="pZK-qL-yPr">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -74,7 +75,8 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="6OW-44-YUU"/>
-                <menuItem title="Quit" keyEquivalent="q" id="Xvw-Cn-iok">
+                <menuItem title="Quit" id="Xvw-Cn-iok">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quitButtonClicked:" target="esz-X7-jQK" id="IsS-io-5Kh"/>
                     </connections>

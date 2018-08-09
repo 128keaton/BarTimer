@@ -13,6 +13,7 @@ class TimerView: NSView {
     @IBOutlet weak var timerField: NSTextField?
     @IBOutlet weak var timeStepper: NSStepper?
 
+
     func update(timeLeft: TimeInterval) {
         DispatchQueue.main.async {
             self.timerField?.stringValue = self.stringFromTimeInterval(interval: timeLeft)
@@ -48,3 +49,4 @@ class TimerView: NSView {
         return String(format: "%02d:%02d", minutes, seconds)
     }
 }
+

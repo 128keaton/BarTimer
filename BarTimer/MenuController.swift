@@ -30,8 +30,24 @@ class MenuController: NSObject {
         timerView.update(timeLeft: 900)
 
         currentTimeInterval = durationStepper.doubleValue
+        
+        let gesture = NSClickGestureRecognizer()
+        gesture.buttonMask = 0x1 // left mouse
+        gesture.numberOfClicksRequired = 2
+        gesture.target = self
+        gesture.action = #selector(resetTime(sender:))
+        
+        timerView.timerField?.addGestureRecognizer(gesture)
     }
 
+    @objc func resetTime(sender: NSGestureRecognizer) {
+        if (currentTimer == nil){
+            currentTimeInterval = 900
+            timerView.update(timeLeft: currentTimeInterval)
+            durationStepper.doubleValue = currentTimeInterval
+        }
+    }
+    
     @IBAction func toggleTimer(sender: NSMenuItem) {
         if (currentTimer == nil) {
             startTimerWithDuration(duration: currentTimeInterval)
@@ -74,6 +90,8 @@ class MenuController: NSObject {
         currentTimeInterval = durationStepper.doubleValue
         timerView.update(timeLeft: sender.doubleValue)
     }
+    
+    
 
     func timerStopped() {
         let notification = NSUserNotification()
@@ -89,11 +107,11 @@ class MenuController: NSObject {
 
     func timerCancelled() {
         timerView.timerStopped()
-        timerView.update(timeLeft: 900)
 
         currentTimer = nil
         startStopItem.title = "Start"
-
+        currentTimeInterval = durationStepper.doubleValue
+        timerView.update(timeLeft: currentTimeInterval)
         (NSApplication.shared.delegate as! AppDelegate).resetStatusIcon()
     }
 
