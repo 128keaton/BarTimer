@@ -61,6 +61,7 @@ class MenuController: NSObject {
     func startTimerWithDuration(duration: TimeInterval) {
         if (currentTimer == nil) {
             DispatchQueue.main.async {
+                self.timerItem?.image = nil
                 self.currentTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update(timer:)), userInfo: nil, repeats: true)
                 RunLoop.current.add(self.currentTimer!, forMode: RunLoopMode.commonModes)
             }
@@ -76,12 +77,7 @@ class MenuController: NSObject {
             } else {
                 currentTimeInterval = currentTimeInterval - 1
                 timerView.update(timeLeft: currentTimeInterval)
-
-                NSAnimationContext.beginGrouping()
-                NSAnimationContext.current.duration = 0.5
-                timerItem?.image = nil
                 timerItem?.title = (timerView.timerField?.stringValue)!
-                NSAnimationContext.endGrouping()
             }
         }
     }
