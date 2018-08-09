@@ -34,7 +34,6 @@ class MenuController: NSObject {
 
     @IBAction func toggleTimer(sender: NSMenuItem) {
         if (currentTimer == nil) {
-
             startTimerWithDuration(duration: currentTimeInterval)
             sender.title = "Stop"
             timerView.timerStarted()
@@ -50,7 +49,6 @@ class MenuController: NSObject {
                 RunLoop.current.add(self.currentTimer!, forMode: RunLoopMode.commonModes)
             }
         }
-
         startStopItem?.title = "Stop"
     }
 
@@ -62,7 +60,7 @@ class MenuController: NSObject {
             } else {
                 currentTimeInterval = currentTimeInterval - 1
                 timerView.update(timeLeft: currentTimeInterval)
-                
+
                 NSAnimationContext.beginGrouping()
                 NSAnimationContext.current.duration = 0.5
                 timerItem?.image = nil
@@ -81,9 +79,11 @@ class MenuController: NSObject {
         let notification = NSUserNotification()
         notification.title = "Timer Finished"
         notification.soundName = nil
+        notification.actionButtonTitle = "Dismiss"
+
         NSUserNotificationCenter.default.deliver(notification)
         NSSound(named: NSSound.Name(rawValue: "alert.m4a"))?.play()
-        
+
         timerCancelled()
     }
 
@@ -93,7 +93,7 @@ class MenuController: NSObject {
 
         currentTimer = nil
         startStopItem.title = "Start"
-        
+
         (NSApplication.shared.delegate as! AppDelegate).resetStatusIcon()
     }
 
@@ -104,8 +104,4 @@ class MenuController: NSObject {
         let hours = (interval / 3600)
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-}
-
-extension MenuController: NSMenuDelegate {
-
 }
