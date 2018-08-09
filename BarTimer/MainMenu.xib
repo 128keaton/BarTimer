@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="esz-X7-jQK" id="b65-Mj-Enu"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="esz-X7-jQK" customClass="AppDelegate" customModule="BarTimer" customModuleProvider="target">
+            <connections>
+                <outlet property="timerMenu" destination="XPw-L6-T23" id="hfr-TU-N8R"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customView id="sf6-hi-0eK" customClass="TimerView" customModule="BarTimer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="38"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5DO-y5-inv">
+                    <rect key="frame" x="142" y="6" width="19" height="27"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" increment="30" maxValue="3300" doubleValue="900" valueWraps="YES" id="MR5-aR-m4J"/>
+                    <connections>
+                        <action selector="updateFieldWithSender:" target="G6n-kT-7iG" id="sh0-9f-eQS"/>
+                    </connections>
+                </stepper>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdS-Uw-DE9">
+                    <rect key="frame" x="18" y="9" width="127" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="kyZ-cO-Qkz">
+                        <font key="font" metaFont="system" size="19"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BdS-Uw-DE9" secondAttribute="trailing" constant="20" symbolic="YES" id="3a1-rV-UTf"/>
+                <constraint firstItem="BdS-Uw-DE9" firstAttribute="centerY" secondItem="5DO-y5-inv" secondAttribute="centerY" id="6XZ-J6-kXQ"/>
+                <constraint firstItem="5DO-y5-inv" firstAttribute="top" secondItem="sf6-hi-0eK" secondAttribute="top" constant="7" id="BbD-Bq-bOs"/>
+                <constraint firstItem="5DO-y5-inv" firstAttribute="centerY" secondItem="sf6-hi-0eK" secondAttribute="centerY" id="MDt-bV-OL9"/>
+                <constraint firstAttribute="trailing" secondItem="5DO-y5-inv" secondAttribute="trailing" constant="5" id="NzC-Hh-pDW"/>
+                <constraint firstItem="BdS-Uw-DE9" firstAttribute="top" secondItem="5DO-y5-inv" secondAttribute="top" id="Z9C-fW-9Bv"/>
+                <constraint firstItem="BdS-Uw-DE9" firstAttribute="leading" secondItem="sf6-hi-0eK" secondAttribute="leading" constant="20" symbolic="YES" id="ugT-Iw-efc"/>
+            </constraints>
+            <connections>
+                <outlet property="timeStepper" destination="5DO-y5-inv" id="z0M-3s-oqD"/>
+                <outlet property="timerField" destination="BdS-Uw-DE9" id="Dks-in-bcx"/>
+            </connections>
+            <point key="canvasLocation" x="147.5" y="300"/>
+        </customView>
+        <customObject id="G6n-kT-7iG" customClass="MenuController" customModule="BarTimer" customModuleProvider="target">
+            <connections>
+                <outlet property="durationStepper" destination="5DO-y5-inv" id="5jn-pu-j38"/>
+                <outlet property="startStopItem" destination="pZK-qL-yPr" id="SOB-CI-oUG"/>
+                <outlet property="timerMenu" destination="XPw-L6-T23" id="q1h-ON-uDh"/>
+                <outlet property="timerView" destination="sf6-hi-0eK" id="slv-TC-1TP"/>
+            </connections>
+        </customObject>
+        <menu id="XPw-L6-T23">
+            <items>
+                <menuItem title="Timer" id="AHe-Tb-uyj">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Start" id="pZK-qL-yPr">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleTimerWithSender:" target="G6n-kT-7iG" id="hfN-eA-xPU"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="6OW-44-YUU"/>
+                <menuItem title="Quit" keyEquivalent="q" id="Xvw-Cn-iok">
+                    <connections>
+                        <action selector="quitButtonClicked:" target="esz-X7-jQK" id="IsS-io-5Kh"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+    </objects>
+</document>
