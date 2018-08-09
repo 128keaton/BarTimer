@@ -25,7 +25,7 @@
             <subviews>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5DO-y5-inv">
                     <rect key="frame" x="142" y="6" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" increment="30" maxValue="3300" doubleValue="900" valueWraps="YES" id="MR5-aR-m4J"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" increment="30" minValue="30" maxValue="3300" doubleValue="900" valueWraps="YES" id="MR5-aR-m4J"/>
                     <connections>
                         <action selector="updateFieldWithSender:" target="G6n-kT-7iG" id="sh0-9f-eQS"/>
                     </connections>

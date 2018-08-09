@@ -78,7 +78,12 @@ class MenuController: NSObject {
     }
 
     func timerStopped() {
+        let notification = NSUserNotification()
+        notification.title = "Timer Finished"
+        notification.soundName = nil
+        NSUserNotificationCenter.default.deliver(notification)
         NSSound(named: NSSound.Name(rawValue: "alert.m4a"))?.play()
+        
         timerCancelled()
     }
 
